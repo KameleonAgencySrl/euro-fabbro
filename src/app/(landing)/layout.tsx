@@ -1,5 +1,6 @@
 import "../globals.css";
 import type { Metadata } from "next";
+import Script from "next/script";
 import { LanguageProvider } from "@/components/LanguageProvider";
 import { site } from "@/lib/content";
 import { LandingHeader } from "@/components/LandingHeader";
@@ -28,6 +29,22 @@ export default function LandingLayout({ children }: { children: React.ReactNode 
         />
       </head>
       <body className="min-h-screen antialiased">
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=AW-1063109549"
+        />
+        <Script
+          id="gtag-init"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'AW-1063109549');
+            `,
+          }}
+        />
         <LanguageProvider>
           <LandingHeader />
           <main>{children}</main>
