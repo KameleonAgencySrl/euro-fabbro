@@ -954,6 +954,8 @@ export const translations = {
       subheadline: "Unisciti alla nostra rete. Siamo sempre alla ricerca di installatori, rivenditori e professionisti qualificati.",
       cta: "Scopri di più",
       ctaHref: "/landing/lavora-con-noi",
+      partnersLabel: "Installatori · Rivenditori · Architetti",
+      partnersText: "Siamo sempre alla ricerca di partner qualificati. Unisciti alla nostra rete e cresci con il brand Ferioli.",
     },
     testimonials: {
       preLabel: "Dicono di noi",
@@ -1438,6 +1440,7 @@ export const translations = {
         formSuccessBody: "Abbiamo ricevuto il tuo messaggio. Il nostro team ti contatterà al più presto.",
         formSuccessCta: "Invia un'altra richiesta",
         success: "Richiesta inviata! Ti ricontatteremo al più presto.",
+        error: "Si è verificato un errore. Riprova o scrivici via email.",
       },
     },
     wppage: {
@@ -1465,3 +1468,4 @@ export const translations = {
 
 export type Lang = keyof typeof translations;
 export type T = (typeof translations)[Lang];
+

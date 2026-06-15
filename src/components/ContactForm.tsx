@@ -4,10 +4,10 @@ import Link from "next/link";
 import { Send, CheckCircle, Loader2 } from "lucide-react";
 import { useT } from "./LanguageProvider";
 
-export function ContactForm() {
+export function ContactForm({ typeOptions }: { typeOptions?: string[] }) {
   const { t, site } = useT();
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
-  const [form, setForm] = useState({ name: "", email: "", phone: "", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", phone: "", type: "", message: "" });
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -20,13 +20,14 @@ export function ContactForm() {
       });
       if (!res.ok) throw new Error();
       setStatus("success");
-      setForm({ name: "", email: "", phone: "", message: "" });
+      setForm({ name: "", email: "", phone: "", type: "", message: "" });
     } catch {
       setStatus("error");
     }
   };
 
   const labels = t.form;
+  const contattiForm = t.contatti.form;
 
   return (
     <form onSubmit={onSubmit} className="card" style={{ padding: "var(--component-padding)" }}>
@@ -53,7 +54,7 @@ export function ContactForm() {
             autoComplete="email"
           />
         </div>
-        <div className="sm:col-span-2">
+        <div className={typeOptions ? "sm:col-span-1" : "sm:col-span-2"}>
           <label className="label-ef">{labels.phone}</label>
           <input
             type="tel"
@@ -63,6 +64,23 @@ export function ContactForm() {
             autoComplete="tel"
           />
         </div>
+        {typeOptions && (
+          <div>
+            <label className="label-ef">{contattiForm.type}</label>
+            <select
+              value={form.type}
+              onChange={(e) => setForm({ ...form, type: e.target.value })}
+              className="input-ef"
+              style={{ height: 48, backgroundColor: "var(--color-bg)" }}
+            >
+              {typeOptions.map((opt) => (
+                <option key={opt} value={opt === typeOptions[0] ? "" : opt}>
+                  {opt}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
         <div className="sm:col-span-2">
           <label className="label-ef">{labels.message}</label>
           <textarea

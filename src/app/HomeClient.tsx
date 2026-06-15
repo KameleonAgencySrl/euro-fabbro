@@ -798,11 +798,20 @@ function CertificationsStrip() {
             {t.certifications.stats.map((stat, i) => (
               <div
                 key={i}
-                className="relative text-center px-4 py-7 sm:py-9"
+                className="relative text-center px-4 py-7 sm:py-9 border-r border-ef-accent/20 last:border-r-0 md:last:border-r-0"
                 style={{
-                  borderRight: i < t.certifications.stats.length - 1 ? "1px solid rgba(184,149,106,0.18)" : "none",
+                  borderRight: "none", // Reset inline style
                 }}
               >
+                <div 
+                  className="absolute right-0 top-1/2 -translate-y-1/2 h-12 w-px bg-[rgba(184,149,106,0.18)] hidden sm:block"
+                  style={{ display: i < t.certifications.stats.length - 1 ? 'block' : 'none' }}
+                />
+                {/* On mobile (2 cols), show border only for odd items (0, 2) */}
+                <div 
+                  className="absolute right-0 top-1/2 -translate-y-1/2 h-12 w-px bg-[rgba(184,149,106,0.18)] sm:hidden"
+                  style={{ display: i % 2 === 0 ? 'block' : 'none' }}
+                />
                 <p
                   className="leading-none"
                   style={{
@@ -1448,13 +1457,13 @@ function WorkWithUsSection() {
                   marginBottom: 8,
                 }}
               >
-                Installers · Resellers · Architects
+                {t.workWithUs.partnersLabel}
               </p>
               <p
                 className="text-body-lg"
                 style={{ color: "rgba(245, 240, 232, 0.85)" }}
               >
-                We&apos;re always looking for qualified partners. Join our network and grow with the Ferioli brand.
+                {t.workWithUs.partnersText}
               </p>
             </div>
           </div>

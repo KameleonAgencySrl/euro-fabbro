@@ -416,7 +416,7 @@ export default function LavoraConNoiLanding() {
                 </button>
                 {status === "error" && (
                   <p className="text-sm" style={{ color: "#c0392b" }}>
-                    {c.success}
+                    {c.error}
                   </p>
                 )}
               </form>
@@ -427,3 +427,4 @@ export default function LavoraConNoiLanding() {
     </>
   );
 }
+

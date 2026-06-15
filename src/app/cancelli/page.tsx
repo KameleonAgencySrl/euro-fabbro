@@ -78,7 +78,7 @@ export default function CancelliPage() {
               {c.galleryTitlePre}<span style={{ color: "var(--color-accent)" }}>{c.galleryTitleAccent}</span>{c.galleryTitlePost}
             </h2>
           </div>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
             {[
               { src: "/images/wp/Cancelli-scorrevoli-zincati-di-design-bologna.jpg", alt: "Cancelli scorrevoli zincati" },
               { src: "/images/wp/Cancelli-a-battente-bologna-san-giovanni-in-persiceto.jpg", alt: "Cancelli a battente" },

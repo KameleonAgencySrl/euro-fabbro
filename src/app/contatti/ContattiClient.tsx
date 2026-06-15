@@ -108,7 +108,7 @@ export default function ContattiClient() {
               <span className="label-eyebrow">{t.pageLabels.write}</span>
               <h2 className="heading-2 mt-3">{c.requestTitle}</h2>
               <div className="mt-6">
-                <ContactForm />
+                <ContactForm typeOptions={c.form.typeOptions} />
               </div>
             </div>
           </div>

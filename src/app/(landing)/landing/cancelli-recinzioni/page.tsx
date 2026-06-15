@@ -298,7 +298,7 @@ export default function CancelliRecinzioniLanding() {
                 </button>
                 {status === "error" && (
                   <p className="text-sm" style={{ color: "#c0392b" }}>
-                    {c.success}
+                    {c.error}
                   </p>
                 )}
                 <div className="text-center pt-4">
