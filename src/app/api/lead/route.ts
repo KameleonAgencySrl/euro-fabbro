@@ -21,19 +21,20 @@ export async function POST(request: Request) {
   try {
     const contentType = request.headers.get("content-type") || "";
     let data: any = {};
+    let attachments: { filename: string; content: Buffer }[] = [];
 
     if (contentType.includes("multipart/form-data")) {
       const formData = await request.formData();
       data = Object.fromEntries(formData.entries());
+      delete data.cv;
 
-      // Handle the file separately if needed, for now just log its existence
       const cvFile = formData.get("cv");
-      if (cvFile instanceof File) {
+      if (cvFile instanceof File && cvFile.size > 0) {
+        if (cvFile.size > 5 * 1024 * 1024) {
+          return NextResponse.json({ ok: false, error: "cv_too_large" }, { status: 413 });
+        }
         data.cvName = cvFile.name;
-        data.cvSize = cvFile.size;
-        data.cvType = cvFile.type;
-        // In a real app, you'd save the file to S3/Disk here
-        console.log("[lead] CV received:", cvFile.name);
+        attachments = [{ filename: cvFile.name, content: Buffer.from(await cvFile.arrayBuffer()) }];
       }
     } else {
       data = await request.json();
@@ -55,8 +56,12 @@ export async function POST(request: Request) {
       from: FROM_EMAIL,
       to: TO_EMAIL,
       replyTo: typeof data.email === "string" && data.email ? data.email : undefined,
-      subject: `Nuovo contatto dal sito — ${data.source || "form contatti"}`,
+      subject:
+        data.source === "candidature"
+          ? `Nuova candidatura dal sito — ${data.name || ""}`
+          : `Nuovo contatto dal sito — ${data.source || "form contatti"}`,
       html: `<table>${rows}</table>`,
+      attachments: attachments.length ? attachments : undefined,
     });
 
     if (error) {

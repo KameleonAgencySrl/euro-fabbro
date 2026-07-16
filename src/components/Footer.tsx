@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, Mail, MapPin, MessageCircle, Facebook, Instagram, ArrowUpRight } from "lucide-react";
+import { Phone, Mail, MapPin, MessageCircle, Facebook, Instagram, ArrowUpRight, Briefcase } from "lucide-react";
 import { useT } from "./LanguageProvider";
 
 export default function Footer() {
@@ -143,6 +143,12 @@ export default function Footer() {
               <li className="flex items-start gap-2">
                 <MapPin size={14} style={{ marginTop: 2, flexShrink: 0, color: "var(--color-accent)" }} />
                 <span>{site.address}</span>
+              </li>
+              <li>
+                <Link href="/candidature" className="flex items-center gap-2 transition-colors duration-200 hover:text-ef-accent">
+                  <Briefcase size={14} style={{ color: "var(--color-accent)" }} />{" "}
+                  {t.lang === "en" ? "Work with us" : "Lavora con noi"}
+                </Link>
               </li>
             </ul>
           </div>
