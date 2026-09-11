@@ -1,7 +1,14 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Il client va creato dentro la richiesta: istanziandolo qui, una chiave assente
+// faceva fallire il build (Next raccoglie i dati delle route in fase di compilazione).
+let resendClient: Resend | null = null;
+function getResend(): Resend | null {
+  if (!process.env.RESEND_API_KEY) return null;
+  if (!resendClient) resendClient = new Resend(process.env.RESEND_API_KEY);
+  return resendClient;
+}
 const TO_EMAIL = process.env.LEAD_TO_EMAIL || "eurofabbro@eurofabbro.com";
 const FROM_EMAIL = process.env.LEAD_FROM_EMAIL || "Eurofabbro Sito <onboarding@resend.dev>";
 
@@ -51,6 +58,12 @@ export async function POST(request: Request) {
           }</td><td style="padding:4px 0">${String(value)}</td></tr>`
       )
       .join("");
+
+    const resend = getResend();
+    if (!resend) {
+      console.error("[lead] RESEND_API_KEY mancante: lead non inviato", data);
+      return NextResponse.json({ ok: false, error: "email_not_configured" }, { status: 503 });
+    }
 
     const { error } = await resend.emails.send({
       from: FROM_EMAIL,
