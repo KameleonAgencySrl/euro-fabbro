@@ -36,6 +36,7 @@ const navItems = [
 const navServices = [
   { key: "cancelli", href: "/cancelli" },
   { key: "inferriate", href: "/inferriate" },
+  { key: "serrande", href: "/serrande" },
   { key: "recinzioni", href: "/recinzioni" },
   { key: "carport", href: "/carport" },
   { key: "scale", href: "/scale" },
@@ -100,6 +101,7 @@ export const translations = {
         cta: "Request a Quote",
         cancelli: "Gates",
         inferriate: "Security Bars",
+        serrande: "Roller Shutters",
         recinzioni: "Fencing",
         carport: "Carports & Canopies",
         scale: "Iron Stairs",
@@ -792,6 +794,7 @@ export const translations = {
         cta: "Richiedi preventivo",
         cancelli: "Cancelli",
         inferriate: "Inferriate",
+        serrande: "Serrande",
         recinzioni: "Recinzioni",
         carport: "Carport e Tettoie",
         scale: "Scale in ferro",

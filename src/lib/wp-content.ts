@@ -1000,6 +1000,48 @@ export const wpPages: WpPage[] = [
         { type: 'p', text: 'La sicurezza della tua abitazione non può aspettare e questo è il momento perfetto per eseguire questo tipo di interventi, contattaci subito per richiedere maggiori informazioni. Operiamo nella zona compresa tra Bologna e Cento .' },
     ] },
   ] },
+  { slug: 'serrande', route: '/serrande', title: 'Serrande su misura', pageImages: [], sections: [
+    { level: 1, heading: 'Serrande su misura', blocks: [
+        { type: 'p', text: 'Produciamo e installiamo serrande per garage, box auto, magazzini, negozi e capannoni. Ogni serranda viene misurata sul vano esistente e costruita nel nostro laboratorio.' },
+        { type: 'p', text: 'Lavoriamo il ferro dal 1977 nella zona fra Bologna, San Giovanni in Persiceto, Crevalcore e Cento. Sopralluogo, produzione, installazione e assistenza sono tutti nostri: non passiamo il lavoro a terzi.' },
+        { type: 'p', text: 'Se devi sostituire una serranda vecchia, chiuderne una nuova o far tornare a funzionare quella che hai, chiamaci e fissiamo un sopralluogo gratuito.' },
+    ] },
+    { level: 2, heading: 'Le serrande che realizziamo', blocks: [
+        { type: 'p', text: 'Ogni tipo di serranda risponde a un problema diverso: proteggere un garage, tenere in vista una vetrina, isolare un magazzino. In sopralluogo valutiamo il vano e ti diciamo quale ha senso.' },
+        { type: 'ul', items: [
+          'Serrande avvolgibili a doghe piene in acciaio, per garage, box e magazzini',
+          'Serrande a maglia e grigliate, per vetrine e negozi che vogliono restare a vista anche da chiusi',
+          'Serrande coibentate, quando conta l’isolamento termico e acustico del locale',
+          'Serrande con doghe microforate, per far passare aria e luce senza rinunciare alla chiusura',
+          'Chiusure rinforzate per locali con esigenze di sicurezza piu alte',
+        ] },
+    ] },
+    { level: 2, heading: 'Motorizzazione e automazione', blocks: [
+        { type: 'p', text: 'Installiamo motori per serrande nuove e motorizziamo quelle gia esistenti, quando la struttura lo consente. Apertura da telecomando, pulsantiera, smartphone o impianto domotico.' },
+        { type: 'p', text: 'I motori vengono montati con i dispositivi di sicurezza previsti dalla normativa: paracadute anticaduta, blocco in caso di ostacolo e sblocco manuale per aprire anche senza corrente.' },
+        { type: 'p', text: 'La stessa automazione la applichiamo a cancelli, porte e basculanti: se hai piu chiusure da comandare, si gestiscono tutte dallo stesso telecomando.' },
+    ] },
+    { level: 2, heading: 'Riparazione e manutenzione', blocks: [
+        { type: 'p', text: 'Una serranda che si blocca o si piega di solito non va sostituita per intero. Interveniamo su molle, rulli, avvolgitori, guide, doghe rovinate e motori fermi.' },
+        { type: 'ul', items: [
+          'Sostituzione di molle e cinghie rotte',
+          'Raddrizzatura o sostituzione delle singole doghe danneggiate',
+          'Guide e rulli che fanno attrito o mandano fuori asse la serranda',
+          'Riparazione del motore, del telecomando o della pulsantiera',
+          'Interventi dopo un tentativo di effrazione',
+          'Manutenzione periodica per chi tiene aperto al pubblico',
+        ] },
+    ] },
+    { level: 2, heading: 'Materiali e finiture', blocks: [
+        { type: 'p', text: 'Le nostre serrande sono in acciaio zincato o in alluminio. Lo zinco protegge dalla ruggine anche nei vani esposti a pioggia e umidita, l’alluminio pesa meno ed e la scelta piu comune quando la serranda va aperta a mano tutti i giorni.' },
+        { type: 'p', text: 'La verniciatura a polvere e disponibile in qualsiasi colore RAL, per abbinare la serranda agli infissi o all’insegna del negozio.' },
+    ] },
+    { level: 2, heading: 'Dal sopralluogo alla serranda installata', blocks: [
+        { type: 'p', text: 'Veniamo a misurare il vano e a capire come lo usi. Sulla base delle misure reali prepariamo un preventivo scritto, senza impegno, di solito entro 24 ore.' },
+        { type: 'p', text: 'Se lo accetti, produciamo la serranda in laboratorio e la installiamo con il nostro personale. Un solo interlocutore dalla prima telefonata alla chiave in mano.' },
+        { type: 'p', text: 'Sulle opere in ferro sono previste le detrazioni fiscali: ti diciamo in sopralluogo se il tuo intervento rientra e quali documenti servono.' },
+    ] },
+  ] },
 ]
 
 export const wpNavMap = {"manutenzione":{"label_it":"Carpenteria certificata","cat":"lavorazioni"},"home":{"cat":"home"},"scale":{"label_it":"Scale in ferro","cat":"lavorazioni"},"balaustre":{"label_it":"Balaustre e ringhiere","cat":"lavorazioni"},"cancelli-pedonali":{"label_it":"Cancelli pedonali","cat":"cancelli"},"cancelli":{"label_en":"Gates","cat":"cancelli","sub":true,"label_it":"Cancelli","nav":true},"inferriate":{"label_en":"Security Bars","cat":"inferriate","sub":true,"label_it":"Inferriate","nav":true},"inferriate-fisse":{"label_it":"Inferriate fisse","cat":"inferriate"},"detrazioni":{"label_it":"Detrazioni fiscali","cat":"detrazioni"},"inferriate-apribili":{"label_it":"Inferriate apribili","cat":"inferriate"},"cancelli-scorrevoli":{"label_it":"Cancelli scorrevoli","cat":"cancelli"},"allarmi":{"label_it":"Allarmi e videosorveglianza","cat":"lavorazioni"},"automazione":{"label_it":"Automazione","cat":"automazione"},"contatti":{"label_it":"Contatti","cat":"contatti"},"cancelli-autoportanti":{"label_it":"Cancelli autoportanti","cat":"cancelli"},"grazie":{"label_it":"Grazie","cat":"grazie"},"barriere-parafiato":{"label_it":"Barriere parafiato","cat":"lavorazioni"},"arredi":{"label_it":"Arredi in ferro","cat":"lavorazioni"},"cancelli-battente":{"label_it":"Cancelli a battente","cat":"cancelli"},"reti-metalliche":{"label_it":"Reti metalliche","cat":"recinzioni"},"inferriate-due-ante":{"label_it":"Inferriate due ante","cat":"inferriate"},"recinzioni":{"label_en":"Fencing","cat":"recinzioni","sub":true,"label_it":"Recinzioni","nav":true},"dehor":{"label_it":"Dehor","cat":"lavorazioni"},"chi-siamo":{"label_it":"Chi siamo","cat":"chi-siamo"},"carport":{"label_en":"Carports","cat":"carport","sub":true,"label_it":"Carport","nav":true},"privacy-policy":{"label_it":"Privacy Policy","cat":"privacy"},"inferriate-snodabili":{"label_it":"Inferriate snodabili","cat":"inferriate"}} as const

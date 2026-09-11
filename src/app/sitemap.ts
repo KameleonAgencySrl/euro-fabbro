@@ -21,6 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const productPages: MetadataRoute.Sitemap = [
     { url: `${BASE_URL}/cancelli`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
     { url: `${BASE_URL}/inferriate`, lastModified: now, changeFrequency: "monthly", priority: 0.9 },
+    { url: `${BASE_URL}/serrande`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE_URL}/recinzioni`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE_URL}/carport`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
     { url: `${BASE_URL}/scale`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
