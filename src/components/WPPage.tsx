@@ -113,10 +113,20 @@ export function WPPage({ slug, preLabel, heroAccent, related }: Props) {
     );
   }
   const titleWords = page.title.split(" ");
-  const titlePre = titleWords.slice(0, Math.max(1, titleWords.length - 1)).join(" ");
-  const titleAccent = heroAccent ?? titleWords[titleWords.length - 1];
+  // L'accento e' la coda del titolo, colorata: vale solo se il titolo finisce davvero
+  // cosi', altrimenti si finiva per stampare due volte lo stesso pezzo di frase.
+  const proposedAccent = heroAccent ?? titleWords[titleWords.length - 1];
+  const accentIsTail = page.title.toLowerCase().endsWith(proposedAccent.toLowerCase());
+  const titleAccent = accentIsTail ? proposedAccent : titleWords[titleWords.length - 1];
+  const titlePre = page.title.slice(0, page.title.length - titleAccent.length);
   const heroImage = page.pageImages.find((i) => i.local) ?? null;
-  const sections = page.sections;
+  // Il primo paragrafo fa da sottotitolo nella hero: non va ristampato subito sotto.
+  const lead = page.sections[0]?.blocks[0];
+  const leadText = lead?.type === "p" ? lead.text : "";
+  const sections = (leadText
+    ? [{ ...page.sections[0], blocks: page.sections[0].blocks.slice(1) }, ...page.sections.slice(1)]
+    : page.sections
+  ).filter((sec) => sec.blocks.length > 0);
   const galleryImages = page.pageImages.filter((i) => i.local);
   const spareImages = galleryImages.slice(sections.length);
   return (
@@ -125,8 +135,8 @@ export function WPPage({ slug, preLabel, heroAccent, related }: Props) {
         preLabel={preLabel}
         headlinePre={titlePre}
         headlineAccent={titleAccent}
-        subheadline={sections[0]?.blocks[0]?.type === "p" ? (sections[0].blocks[0] as { type: "p"; text: string }).text : ""}
-        cta={t.cta.headlineAccent}
+        subheadline={leadText}
+        cta={t.nav.label.cta}
         {...(heroImage && {
           heroImage: heroImage.local,
           heroImageAlt: page.title,
