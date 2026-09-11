@@ -150,7 +150,7 @@ export default function Header() {
                           className="absolute left-1/2 -translate-x-1/2 top-full"
                           style={{
                             marginTop: 12,
-                            width: 560,
+                            width: 600,
                             backgroundColor: "var(--color-surface)",
                             border: "1px solid var(--color-border-subtle)",
                             borderRadius: "var(--radius-lg)",
@@ -166,7 +166,7 @@ export default function Header() {
                               borderTop: "1px solid var(--color-border-subtle)",
                             }}
                           />
-                          <div className="grid grid-cols-1 gap-1">
+                          <div className="grid grid-cols-2 gap-x-2 gap-y-1">
                             {t.nav.services.map((s, idx) => {
                               const active = isActive(s.href);
                               return (

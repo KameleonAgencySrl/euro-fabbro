@@ -22,3 +22,4 @@ original-bundle.*
 ANALYSIS.md
 DESIGN_TOKENS.md
 prompt.txt
+.env*.local
