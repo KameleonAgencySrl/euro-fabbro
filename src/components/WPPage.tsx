@@ -5,6 +5,7 @@ import { useT } from "./LanguageProvider";
 import { SubpageHero } from "./Subpage";
 import { ContactCta } from "./ContactCta";
 import { CheckCircle, ArrowRight, ChevronRight, Award, Phone, MessageCircle, Mail, MapPin, Clock, Shield } from "lucide-react";
+import { DemoNotice, DemoPhotoSlot } from "./DemoNotes";
 import { getWpPage } from "@/lib/wp-content";
 import type { WpPage, WpBlock, WpSection } from "@/lib/wp-content";
 
@@ -14,6 +15,9 @@ type Props = {
   heroAccent?: string;
   ctaLabel?: string;
   related?: { href: string; label: string }[];
+  // demo: bozza da far validare al cliente, si tolgono quando arrivano i contenuti
+  demoNotice?: { title: string; body: string };
+  demoSlots?: { photo: string; ask: string }[];
 };
 
 function renderBlock(b: WpBlock, key: number) {
@@ -51,13 +55,14 @@ function renderSection(
   s: WpSection,
   idx: number,
   images: { src: string; local: string }[],
-  bg: "bg" | "bg-secondary"
+  bg: "bg" | "bg-secondary",
+  demoSlot?: { photo: string; ask: string }
 ) {
   const headingId = `wp-section-${idx}`;
   const HeadingTag = (s.level === 1 ? "h2" : s.level === 2 ? "h2" : "h3") as "h2" | "h3";
   const headingClass = s.level === 3 ? "heading-3" : "heading-2";
   const image = images.length > 0 ? images[idx % images.length] : null;
-  const hasImage = image != null;
+  const hasImage = image != null || demoSlot != null;
   const sectionBg = bg === "bg" ? "var(--color-bg)" : "var(--color-bg-secondary)";
   return (
     <section
@@ -84,7 +89,12 @@ function renderSection(
               {s.blocks.map((b, i) => renderBlock(b, i))}
             </div>
           </div>
-          {hasImage && image && (
+          {demoSlot && (
+            <div className="order-last">
+              <DemoPhotoSlot photo={demoSlot.photo} ask={demoSlot.ask} />
+            </div>
+          )}
+          {!demoSlot && hasImage && image && (
             <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden order-first lg:order-last">
               <Image
                 src={image.local}
@@ -101,7 +111,7 @@ function renderSection(
   );
 }
 
-export function WPPage({ slug, preLabel, heroAccent, related }: Props) {
+export function WPPage({ slug, preLabel, heroAccent, related, demoNotice, demoSlots }: Props) {
   const { t, site } = useT();
   const page = getWpPage(slug);
   if (!page) {
@@ -143,8 +153,9 @@ export function WPPage({ slug, preLabel, heroAccent, related }: Props) {
           heroImagePosition: "center 45%",
         })}
       />
+      {demoNotice && <DemoNotice title={demoNotice.title} body={demoNotice.body} />}
       {sections.map((s, idx) =>
-        renderSection(s, idx, galleryImages, idx % 2 === 0 ? "bg" : "bg-secondary")
+        renderSection(s, idx, galleryImages, idx % 2 === 0 ? "bg" : "bg-secondary", demoSlots?.[idx])
       )}
       {spareImages.length > 0 && (
         <section style={{ backgroundColor: "var(--color-surface)", paddingTop: "var(--section-padding-y)", paddingBottom: "var(--section-padding-y)" }}>
